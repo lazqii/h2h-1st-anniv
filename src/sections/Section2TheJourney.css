@@ -1,0 +1,259 @@
+.journey-container {
+    width: 100%;
+}
+
+.era-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+}
+
+.era-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Group Polaroid */
+.group-polaroid-container {
+    display: flex;
+    justify-content: center;
+}
+
+.group-polaroid {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+}
+
+.group-polaroid:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #eee;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.polaroid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.polaroid-caption {
+    text-align: center;
+    color: #111;
+}
+
+.polaroid-caption h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.polaroid-caption p {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Photobooth specific styles */
+.group-polaroid.photobooth {
+    padding: 1rem 1rem 3rem 1rem;
+    width: auto;
+    min-width: 300px;
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.photobooth-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.pb-img {
+    aspect-ratio: 4/3;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0;
+}
+
+.group-polaroid.photobooth h2 {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 3rem;
+    color: #333;
+}
+
+/* Lyric Quote */
+.lyric-quote {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.lyric-quote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    opacity: 0.8;
+}
+
+/* Era Outro Image */
+.era-outro-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.era-outro-image img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Members Grid 2x4 */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding-block: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .group-polaroid {
+        padding: 1rem;
+    }
+
+    .polaroid-image {
+        margin-bottom: 1rem;
+    }
+
+    .polaroid-caption h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Individual Member Polaroid Style */
+.member-polaroid {
+    background-color: #fff;
+    padding: 10px 10px 20px 10px;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.m-polaroid-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background-color: #eee;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.m-polaroid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.member-polaroid:hover .m-polaroid-image img {
+    transform: scale(1.05);
+}
+
+.m-polaroid-caption {
+    text-align: center;
+    color: #111;
+    font-family: 'Nothing You Could Do', cursive, var(--font-sans);
+    /* Hand-written feel */
+}
+
+.member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Secondary Era Gallery (Focus Era) Slider */
+.secondary-era-gallery {
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE */
+    -webkit-overflow-scrolling: touch;
+}
+
+.secondary-era-gallery::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.secondary-gallery-item {
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 4/5;
+}
+
+.secondary-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.secondary-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .secondary-gallery-item {
+        flex: 0 0 85vw;
+        /* Tighter layout for mobile swiping */
+    }
+}

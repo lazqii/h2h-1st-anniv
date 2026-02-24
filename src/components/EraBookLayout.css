@@ -1,0 +1,219 @@
+.era-book-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.book-wrapper {
+    width: 100%;
+    max-width: 900px;
+    background: #fdfbf7;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.book-frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Book Concept */
+.book-3d-container {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    max-height: 60vh;
+    border-radius: 4px;
+    background-color: transparent;
+    perspective: 2000px;
+    position: relative;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.book-base {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.book-base-left {
+    left: 0;
+    border-radius: 4px 0 0 4px;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.book-base-right {
+    right: 0;
+    border-radius: 0 4px 4px 0;
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.book-leaf {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left center;
+}
+
+.book-leaf.flipped {
+    transform: rotateY(-180deg);
+}
+
+.leaf-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #fff;
+    overflow: hidden;
+}
+
+.leaf-front {
+    border-radius: 0 4px 4px 0;
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.leaf-back {
+    transform: rotateY(180deg);
+    border-radius: 4px 0 0 4px;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.book-spine-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.08) 20%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0.08) 80%,
+            rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Page content specific */
+.page-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.book-base-left .page-content,
+.leaf-back .page-content {
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+    /* Pulled closer to spine */
+}
+
+.book-base-right .page-content,
+.leaf-front .page-content {
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+    /* Pulled closer to spine */
+}
+
+.page-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blank-page {
+    width: 100%;
+    height: 100%;
+    background-color: #fcfcfc;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 10px;
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.book-base-left .page-number,
+.leaf-back .page-number {
+    left: 20px;
+}
+
+.book-base-right .page-number,
+.leaf-front .page-number {
+    right: 20px;
+}
+
+/* Controls */
+.book-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.book-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.book-nav:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.book-nav:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.book-indicator {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .book-wrapper {
+        padding: 1rem;
+    }
+
+    .book-3d-container {
+        min-height: 250px;
+    }
+}

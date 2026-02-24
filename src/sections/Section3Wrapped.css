@@ -1,0 +1,253 @@
+.section-wrapped {
+    min-height: 100vh;
+    padding: 8rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--text-color);
+}
+
+.hall-of-fame-content {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.wrapped-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.wrapped-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.wrapped-header p {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #111;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    top: 2.5rem;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item.left .timeline-dot {
+    right: -8px;
+}
+
+.timeline-item.right .timeline-dot {
+    left: -8px;
+}
+
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.timeline-img-wrapper {
+    background: #fff;
+    padding: 1.25rem 1.25rem 4rem 1.25rem;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    transform: rotate(calc(var(--rand-rot, 0) * 1deg));
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.timeline-img-wrapper:hover {
+    transform: rotate(0deg) scale(1.02);
+    z-index: 10;
+}
+
+/* Faux tape for aesthetics */
+.timeline-img-wrapper .tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 100px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+.timeline-img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.timeline-plaque {
+    background: #1c1c1c;
+    color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    position: relative;
+    border-top: 4px solid #d4af37;
+    /* Gold accent */
+}
+
+.timeline-item.left .timeline-plaque {
+    text-align: right;
+    margin-right: auto;
+}
+
+.timeline-item.right .timeline-plaque {
+    text-align: left;
+    margin-left: auto;
+}
+
+.timeline-date {
+    font-family: var(--font-sans);
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #d4af37;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.timeline-plaque h3 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #fcfcfc;
+}
+
+.timeline-plaque p {
+    font-size: 0.95rem;
+    color: #bcbcbc;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Anniversary End */
+.anniversary-end {
+    margin-top: 8rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.end-image {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    display: block;
+}
+
+.end-message {
+    padding: 4rem 3rem;
+    background: #111;
+    color: #fff;
+}
+
+.end-message h3 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.end-message p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.signature {
+    margin-top: 2rem !important;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 2rem !important;
+    color: #fff !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 0;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item.left .timeline-dot,
+    .timeline-item.right .timeline-dot {
+        left: 12px;
+    }
+
+    .end-message {
+        padding: 3rem 1.5rem;
+    }
+}
